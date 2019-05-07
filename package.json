@@ -1,0 +1,40 @@
+{
+  "name": "wenjuan_admin",
+  "version": "1.0.0",
+  "description": "admin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NotFoundGitHub/wenjuan_admin.git"
+  },
+  "keywords": [
+    "admin"
+  ],
+  "author": "zhao",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NotFoundGitHub/wenjuan_admin/issues"
+  },
+  "homepage": "https://github.com/NotFoundGitHub/wenjuan_admin#readme",
+  "dependencies": {
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "koa": "^2.7.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-logger": "^3.2.0",
+    "koa-router": "^7.4.0",
+    "koa-session": "^5.10.1",
+    "koa-static": "^5.0.0",
+    "moment": "^2.24.0",
+    "mongoose": "^5.4.13",
+    "nodemailer": "^6.1.1",
+    "koa-convert": "^1.2.0",
+    "koa-json": "^2.0.2",
+    "koa-onerror": "^1.2.1",
+    "koa-views": "^5.2.1"
+  }
+}
