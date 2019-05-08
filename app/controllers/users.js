@@ -28,7 +28,21 @@ const login = async (ctx, next) => {
 }
 
 const logout = async (ctx, next) => {
-	ctx.session.username = null;
+	let username = ctx.request.query.username;
+	// console.log("username", username)
+	// console.log("username", ctx.session.username)
+	if (ctx.session.username === username) {
+		ctx.session.username = null;
+		ctx.body = {
+			status: 1,
+			msg: '退出成功'
+		}
+	} else {
+		ctx.body = {
+			status: 0,
+			msg: '退出失败'
+		}
+	}
 	return next;
 }
 
@@ -54,6 +68,7 @@ const regist = async (ctx, next) => {
 				status: 0
 			}
 		} else {
+			ctx.session.username = null;
 			ctx.body = {
 				msg: '注册失败',
 				status: -1
@@ -61,6 +76,7 @@ const regist = async (ctx, next) => {
 		}
 
 	} else {
+		ctx.session.username = null;
 		ctx.body = {
 			msg: '验证码错误',
 			status: 0
@@ -91,6 +107,7 @@ const modifyPassword = async (ctx, next) => {
 				status: 0
 			}
 		} else {
+			ctx.session.username = null;
 			ctx.body = {
 				msg: '更新密码失败',
 				status: -1
@@ -98,6 +115,7 @@ const modifyPassword = async (ctx, next) => {
 		}
 
 	} else {
+		ctx.session.username = null;
 		ctx.body = {
 			msg: '验证码错误',
 			status: 0
@@ -115,7 +133,7 @@ const verify = async (ctx, next) => {
 	let vericode = Math.random().toString(36).substr(2, 6);
 	ctx.session.vericode = vericode;
 	ctx.session.username = username;
-	let flag = sendMail(username, vericode);
+	let flag = await sendMail(username, vericode);
 
 	flag ? ctx.body = {
 		msg: '发送成功到' + username,

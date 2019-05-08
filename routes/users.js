@@ -5,6 +5,7 @@ router.prefix('/api/user')
 
 
 router.post('/login', usersController.login)
+router.get('/logout', usersController.logout)
 router.post('/verify', usersController.verify)
 router.post('/regist', usersController.regist)
 router.post('/modifyPassword', usersController.modifyPassword)
