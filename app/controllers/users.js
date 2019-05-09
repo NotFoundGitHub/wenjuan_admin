@@ -131,17 +131,21 @@ const verify = async (ctx, next) => {
 		username
 	} = ctx.request.body
 	let vericode = Math.random().toString(36).substr(2, 6);
-	ctx.session.vericode = vericode;
-	ctx.session.username = username;
 	let flag = await sendMail(username, vericode);
 
-	flag ? ctx.body = {
-		msg: '发送成功到' + username,
-		status: 1
-	} : ctx.body = {
-		msg: '发送失败，请检查',
-		status: 0
-	};
+	if (flag) {
+		ctx.session.vericode = vericode;
+		ctx.session.username = username;
+		ctx.body = {
+			msg: '发送成功到' + username,
+			status: 1
+		}
+	} else {
+		ctx.body = {
+			msg: '发送失败，请检查',
+			status: 0
+		};
+	}
 	return next;
 }
 

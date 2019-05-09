@@ -29,9 +29,11 @@ app.use(bodyParser())
 const index = require('./routes/index')
 const users = require('./routes/users')
 const surveys = require('./routes/surveys')
+const quest = require('./routes/quest')
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
 app.use(surveys.routes(), surveys.allowedMethods())
+app.use(quest.routes(), quest.allowedMethods())
 
 
 // app

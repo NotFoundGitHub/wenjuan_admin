@@ -1,4 +1,5 @@
 const surveyModel = require("../models/surveys")
+const questModel = require("../models/quest")
 
 const getSurvey = async (ctx, next) => {
 	let username = ctx.session.username;
@@ -81,21 +82,32 @@ const delSurvey = async (ctx, next) => {
 	let username = ctx.session.username;
 	if (username) {
 		let _id = ctx.request.query._id;
-		let res = await surveyModel.del({
-			_id
+
+		let delQuestRes = await delAllQuest({
+			survey: _id
 		})
-		console.log("res:", res)
-		if (res.deletedCount) {
+		let delSurRes = (await surveyModel.del({
+			_id
+		})).deletedCount
+		console.log("res:", delQuestRes, delSurRes)
+		if (delSurRes && delQuestRes) {
 			ctx.body = {
 				msg: "删除成功",
 				status: 1,
+				data: {
+					surveyCount: delSurRes,
+					questCount: delQuestRes
+				}
 			}
 		} else {
 			ctx.body = {
-				msg: "删除失败",
-				status: -1
+				msg: "空数据，删除失败",
+				status: -1,
+				data: {
+					surveyCount: delSurRes,
+					questCount: delQuestRes
+				}
 			}
-
 		}
 
 	} else {
@@ -106,6 +118,10 @@ const delSurvey = async (ctx, next) => {
 	}
 	return next;
 }
+const delAllQuest = async (con) => {
+	return (await questModel.delAll(con)).deletedCount;
+}
+
 const updateSurvey = async (ctx, next) => {
 	let username = ctx.session.username;
 	if (username) {
