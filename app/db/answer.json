@@ -1,0 +1,31 @@
+{
+	"survey": "5cd2bae7c8cb8207100071a1",
+	"answers": [{
+			"questIndex": 1,
+			"_id": "5cd3d10fb0590f3740dcf8e3",
+			"value": 1
+		}, {
+			"questIndex": 2,
+			"_id": "5cd42fe2250d834448b18bf1",
+			"value": 1
+		}, {
+			"questIndex": 3,
+			"_id": "5cd430394d999b2c785d835e",
+			"value": 1
+		}, {
+			"questIndex": 4,
+			"_id": "5cd432d55ddbe629f44277c0",
+			"value": 1
+		}, {
+			"questIndex": 5,
+			"_id": "5cd433607642aa0e28ca7864",
+			"value": "nanjing"
+		}, {
+			"questIndex": 6,
+			"_id": "5cd433697642aa0e28ca7865",
+			"value": "贵"
+		}
+
+
+	]
+}

@@ -26,14 +26,18 @@ app.use(static(path.join(__dirname, './static')));
 app.use(logger())
 app.use(bodyParser())
 
+// 路由配置
 const index = require('./routes/index')
 const users = require('./routes/users')
 const surveys = require('./routes/surveys')
 const quest = require('./routes/quest')
+const answer = require('./routes/answer')
+
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
 app.use(surveys.routes(), surveys.allowedMethods())
 app.use(quest.routes(), quest.allowedMethods())
+app.use(answer.routes(), answer.allowedMethods())
 
 
 // app

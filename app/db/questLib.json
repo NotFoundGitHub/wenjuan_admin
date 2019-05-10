@@ -1,0 +1,95 @@
+[{
+	"survey": "5cd2bae7c8cb8207100071a1",
+	"name": "sex",
+	"type": "radio-group",
+	"label": "年龄",
+	"value": 1,
+	"children": {
+		"type": "radio",
+		"list": [{
+				"label": 1,
+				"title": "10-20"
+			},
+			{
+				"label": 2,
+				"title": "20-30"
+			},
+			{
+				"label": 3,
+				"title": "30-40"
+			},
+			{
+				"label": 4,
+				"title": "40-50"
+			}
+		]
+	}
+}, {
+	"survey": "5cd2bae7c8cb8207100071a1",
+	"name": "sex",
+	"type": "radio-group",
+	"label": "学位",
+	"value": 1,
+	"children": {
+		"type": "radio",
+		"list": [{
+				"label": 1,
+				"title": "工科"
+			},
+			{
+				"label": 2,
+				"title": "文科"
+			},
+			{
+				"label": 3,
+				"title": "经管"
+			}
+		]
+	}
+}, {
+	"survey": "5cd2bae7c8cb8207100071a1",
+	"name": "sex",
+	"type": "radio-group",
+	"label": "是否兼职",
+	"value": 1,
+	"children": {
+		"type": "radio",
+		"list": [{
+				"label": 1,
+				"title": "是"
+			},
+			{
+				"label": 2,
+				"title": "否"
+			}
+		]
+	}
+}, {
+	"survey": "5cd2bae7c8cb8207100071a1",
+	"name": "city",
+	"type": "i-select",
+	"label": "学校所在城市",
+	"value": "",
+	"children": {
+		"type": "i-option",
+		"list": [{
+			"value": "shanxi",
+			"title": "陕西"
+		}, {
+			"value": "beijing",
+			"title": "北京"
+		}, {
+			"value": "shanghai",
+			"title": "上海"
+		}, {
+			"value": "nanjing",
+			"title": "南京"
+		}]
+	}
+}, {
+	"survey": "5cd2bae7c8cb8207100071a1",
+	"name": "name",
+	"type": "i-input",
+	"label": "觉得学校消费贵么",
+	"value": ""
+}]
