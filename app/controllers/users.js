@@ -6,7 +6,7 @@ const login = async (ctx, next) => {
 		username,
 		password
 	} = ctx.request.body;
-
+	console.log(ctx.request.body)
 	let result = await userModel.login({
 		username,
 		password
@@ -65,7 +65,7 @@ const regist = async (ctx, next) => {
 		if (result) {
 			ctx.body = {
 				msg: '注册成功',
-				status: 0
+				status: 1
 			}
 		} else {
 			ctx.session.username = null;
@@ -104,7 +104,7 @@ const modifyPassword = async (ctx, next) => {
 		if (result) {
 			ctx.body = {
 				msg: '更新密码成功',
-				status: 0
+				status: 1
 			}
 		} else {
 			ctx.session.username = null;
@@ -148,12 +148,40 @@ const verify = async (ctx, next) => {
 	}
 	return next;
 }
+const getUser = async (ctx, next) => {
+	let username = ctx.session.username;
+	if (username) {
+		let data = await userModel.get({
+			username
+		})
+		if (Object.keys(data).length) {
+			ctx.body = {
+				msg: "查询成功",
+				status: 1,
+				data
+			}
+		} else {
+			ctx.body = {
+				msg: "无数据",
+				status: -1
+			}
 
+		}
+
+	} else {
+		ctx.body = {
+			msg: "未登录",
+			status: 0
+		}
+	}
+	return next;
+}
 
 module.exports = {
 	login,
 	logout,
 	verify,
 	regist,
-	modifyPassword
+	modifyPassword,
+	getUser
 }

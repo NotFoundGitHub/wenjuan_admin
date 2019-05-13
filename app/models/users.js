@@ -32,6 +32,10 @@ const save = (data) => {
 	})
 }
 
+const get = async (con) => {
+	return userModel.findOne(con);
+}
+
 const login = async (con) => {
 	return userModel.findOne(con);
 }
@@ -40,6 +44,7 @@ const updatepass = async (con, doc) => {
 }
 
 module.exports = {
+	get,
 	save,
 	login,
 	updatepass

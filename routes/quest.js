@@ -1,7 +1,7 @@
 const router = require('koa-router')()
 const questController = require("../app/controllers/quest")
 
-router.prefix('/api')
+// router.prefix('/api')
 
 
 router.get('/quest', questController.getQuest);

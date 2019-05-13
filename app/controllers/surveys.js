@@ -3,23 +3,47 @@ const questModel = require("../models/quest")
 
 const getSurvey = async (ctx, next) => {
 	let username = ctx.session.username;
+	let _id = ctx.request.query._id;
+	// console.log(_id)
 	if (username) {
-		let data = await surveyModel.getAll({
-			username
-			// username: "141790259@qq.com"
-		})
-		if (data.length) {
-			ctx.body = {
-				msg: "查询成功",
-				status: 1,
-				data
-			}
-		} else {
-			ctx.body = {
-				msg: "无数据",
-				status: -1
+		if (_id) {
+			let data = await surveyModel.get({
+				username,
+				_id
+			})
+			console.log(data)
+			if (Object.keys(data).length) {
+				ctx.body = {
+					msg: "查询成功",
+					status: 1,
+					data
+				}
+			} else {
+				ctx.body = {
+					msg: "无数据",
+					status: -1
+				}
+
 			}
 
+		} else {
+			let data = await surveyModel.getAll({
+				username
+				// username: "141790259@qq.com"
+			})
+			if (data.length) {
+				ctx.body = {
+					msg: "查询成功",
+					status: 1,
+					data
+				}
+			} else {
+				ctx.body = {
+					msg: "无数据",
+					status: -1
+				}
+
+			}
 		}
 
 	} else {
@@ -90,7 +114,7 @@ const delSurvey = async (ctx, next) => {
 			_id
 		})).deletedCount
 		console.log("res:", delQuestRes, delSurRes)
-		if (delSurRes && delQuestRes) {
+		if (delSurRes || delQuestRes) {
 			ctx.body = {
 				msg: "删除成功",
 				status: 1,

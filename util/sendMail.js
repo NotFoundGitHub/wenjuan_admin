@@ -39,7 +39,7 @@ const company = [
 const conf = company[Math.round(Math.random() * 2)];
 
 // 邮件附件字符，避免邮箱划为垃圾邮件
-const time = new Date().toJSON().split("T")[1].substr(0, 8);
+const time = new Date().toLocaleTimeString()
 const randStr = Math.random().toString(36).substr(2, 4)
 
 

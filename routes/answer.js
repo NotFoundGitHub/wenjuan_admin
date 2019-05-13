@@ -1,7 +1,7 @@
 const router = require('koa-router')()
 const answerController = require("../app/controllers/answer")
 
-router.prefix('/api')
+// router.prefix('/api')
 
 
 router.get('/answer', answerController.getAnswer)
