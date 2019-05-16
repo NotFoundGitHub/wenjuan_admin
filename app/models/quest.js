@@ -13,15 +13,15 @@ let questSchema = new mongoose.Schema({
 		type: Number,
 		required: true
 	},
-	name: {
-		type: String,
-		required: true
+	required: {
+		type: Boolean,
+		default: false
 	},
 	type: {
 		type: String,
 		required: true
 	},
-	label: {
+	title: {
 		type: String,
 		required: true
 	},
