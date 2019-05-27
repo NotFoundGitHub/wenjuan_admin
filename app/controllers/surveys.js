@@ -1,5 +1,6 @@
 const surveyModel = require("../models/surveys")
 const questModel = require("../models/quest")
+const answerModel = require("../models/answer")
 
 const getSurvey = async (ctx, next) => {
 	let username = ctx.session.username;
@@ -113,8 +114,11 @@ const delSurvey = async (ctx, next) => {
 		let delSurRes = (await surveyModel.del({
 			_id
 		})).deletedCount
+		let delAnswer = (await answerModel.delAll({
+			survey: _id
+		})).deletedCount
 		console.log("res:", delQuestRes, delSurRes)
-		if (delSurRes || delQuestRes) {
+		if (delSurRes || delQuestRes || delAnswer) {
 			ctx.body = {
 				msg: "删除成功",
 				status: 1,
